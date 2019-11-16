@@ -21,11 +21,11 @@ end
 
 def self.count
   @@count
-  end
+end
 
 def self.genres
   @@genres.uniq
-  end
+end
 
 
 def self.artists
@@ -34,11 +34,17 @@ end
 
 def self.genre_count
   genre_count = {}
+  # The iterator is the genre, the block is everything between "do" and "end."
+  # Below, genre iterates over the genres class variable to iterate over each instance of genres.
+  # Then, it adds each instance to the empty hash of genre_count, if the genre is present in the
+  # hash, it needs to add that genre and count it (10 country songs, would have the genre of country
+  # listed 10 times) via looping (+=1).  If the country genre does not exist, it will add it as a new genre to the hash (=1).
   @@genres.each do |genre|
-      if genre_count[genre] #if genre is already present in the hash
-          genre_count[genre] +=1 #skip over and go to the next artist to evaluate
+
+      if genre_count[genre] #adding the instances of genre to the hash
+          genre_count[genre] +=1 #adding the new genre
       else
-        genre_count[genre] = 1 #if genre doesn't exist, add genre to the hash to be returned
+        genre_count[genre] = 1 #if genre doesn't exist, add genre as a new genre to the hash
       end
     end
     genre_count
